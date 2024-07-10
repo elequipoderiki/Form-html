@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con validaciones</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+    <div  class="container mt-3" >
+    
+        <div class="jumbotron ">
+            <h1 class="display-4 text-center">Formulario de datos personales</h1>
+        </div>
+
+            <form action="" id="myform"  class="needs-validation mb-5" novalidate>
+             
+                    <div class="form-group">
+                        <label for="nombre">Nombre: </label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese nombre" required>
+                        <div class="invalid-feedback">
+                           El campo nombre es requerido
+                        </div>
+                    </div>
+                    <div class="form-group">                    
+                        <label for="apellido">Apellido: </label>
+                        <input type="text" id="apellido" name="apellido" class="form-control" placeholder="Ingrese apellido" required> 
+                        <div class="invalid-feedback">
+                            El campo apellido es requerido
+                         </div> 
+                    </div>
+                    <div class="form-group">                                        
+                        <label for="email"  pattern=".+@email.com" >Email: </label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Ingrese correo electrónico" required>
+                        <div class="invalid-feedback">
+                            El campo email es requerido
+                         </div>   
+                    </div>
+                    <div class="form-group">                                                            
+                        <label for="fecha_nac">Fecha de Nacimiento: </label>
+                        <input type="date" id="fecha_nac" name="fecha_nac" class="form-control" required> 
+                        <div class="invalid-feedback">
+                            El campo fecha es requerido
+                         </div>   
+                    </div>
+                    
+                    <div class="form-group">                                                            
+                        <label for="pais">Pais de Residencia: </label>
+                        <select class="form-control">
+                            <option value="Argentina">Argentina</option>
+                            <option value="Brazil">Brasil</option>
+                            <option value="Canada">Canadá</option>
+                            <option value="China">China</option>
+                            <option value="France">Francia</option>
+                            <option value="Germany">Alemania</option>
+                        </select>
+
+                    </div>
+                    <div id="enviar-form" >
+                        <button type="submit" onclick="" id="enviar" class="btn btn-primary">Enviar</button> 
+                    </div>
+                 
+            </form>
+    </div>
+</body>
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+            });
+        }, false);
+        })();
+</script>
+</html>
